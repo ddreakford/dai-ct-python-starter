@@ -18,8 +18,8 @@ class AndroidDemoTest(base_test.BaseTest):
         self.options.set_capability('appPackage', 'com.experitest.ExperiBank')
         self.options.set_capability('appActivity', '.LoginActivity')
         self.options.set_capability('platformName', 'android')
-        self.options.set_capability('deviceQuery', "@os='android'")
-        self.options.set_capability('appiumVersion', '1.22.3')
+        self.options.set_capability('deviceQuery', "@os='android' and contains(@name, 'Galaxy S2')")
+        # self.options.set_capability('appiumVersion', '1.22.3')
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)
 
     def testAndroidNativeDemo(self):
@@ -39,7 +39,7 @@ class AndroidDemoTest(base_test.BaseTest):
         self.driver.find_element(By.ID, 'android:id/button1').click()
 
     def tearDown(self):
-        print ('Report URL: ' + self.driver.capabilities['reportUrl'])
+        print ('Report URL: ' + self.driver.capabilities["digitalai:reportUrl"])
         self.driver.quit()
 
 

@@ -16,8 +16,8 @@ class LocalIosTest(base_test.BaseTest):
         super().setUp()
         self.options.set_capability('testName', self.testName)
         self.options.set_capability('platformName', 'ios')
-        self.options.set_capability('deviceQuery', "@os='ios'")
-        self.options.set_capability('appiumVersion', "1.22.3")
+        self.options.set_capability('deviceQuery', "@os='ios' and contains(@name, 'Pro')")
+        # self.options.set_capability('appiumVersion', "1.22.3")
         self.options.set_capability('browserName', 'safari')
 
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)
@@ -41,7 +41,7 @@ class LocalIosTest(base_test.BaseTest):
         self.driver.find_element(By.XPATH, "//*[@data-auto='transfer-button']").click()
 
     def tearDown(self):
-        print ('Report URL: ' + self.driver.capabilities["reportUrl"])
+        print ('Report URL: ' + self.driver.capabilities["digitalai:reportUrl"])
         self.driver.quit()
 
 if __name__ == '__main__':

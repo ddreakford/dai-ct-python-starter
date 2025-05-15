@@ -16,8 +16,8 @@ class LocalAndroidTest(base_test.BaseTest):
         super().setUp()
         self.options.set_capability('testName', self.testName)
         self.options.set_capability('platformName', 'android')
-        self.options.set_capability('deviceQuery', "@os='android'")
-        self.options.set_capability('appiumVersion', '1.22.3')
+        self.options.set_capability('deviceQuery', "@os='android' and contains(@name, 'Galaxy S2')")
+        # self.options.set_capability('appiumVersion', '1.22.3')
         self.options.set_capability('browserName', 'chrome')
 
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)
@@ -43,7 +43,7 @@ class LocalAndroidTest(base_test.BaseTest):
 
 
     def tearDown(self):
-        print ('Report URL: ' + self.driver.capabilities["reportUrl"])
+        print ('Report URL: ' + self.driver.capabilities["digitalai:reportUrl"])
         self.driver.quit()
 
 if __name__ == '__main__':

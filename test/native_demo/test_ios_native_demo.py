@@ -16,8 +16,8 @@ class IosDemoTest(base_test.BaseTest):
         self.options.set_capability('app', 'cloud:com.experitest.ExperiBank')
         self.options.set_capability('bundleId', 'com.experitest.ExperiBank')
         self.options.set_capability('platformName', 'ios')
-        self.options.set_capability('deviceQuery', "@os='ios'")
-        self.options.set_capability('appiumVersion', "1.22.3")
+        self.options.set_capability('deviceQuery', "@os='ios' and contains(@name, 'Pro')")
+        # self.options.set_capability('appiumVersion', "1.22.3")
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)
 
     def testIosNativeDemo(self):
@@ -34,7 +34,7 @@ class IosDemoTest(base_test.BaseTest):
         self.driver.find_element(By.XPATH, "//*[@name='Yes']").click()
 
     def tearDown(self):
-        print ('Report URL: ' + self.driver.capabilities['reportUrl'])
+        print ('Report URL: ' + self.driver.capabilities["digitalai:reportUrl"])
         self.driver.quit()
 
 
