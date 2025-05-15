@@ -2,11 +2,7 @@ pipeline {
   agent { dockerfile true }
   stages {
     stage('Test') {
-      steps {
-        sh '''
-          python --version
-        '''
-        
+      steps {        
         // Write cloud.properties file
         script {
           def cloudProperties = """
@@ -16,6 +12,12 @@ pipeline {
           """
           writeFile file: 'cloud.properties', text: cloudProperties
         }
+
+        // Run the tests
+        sh '''
+          python --version
+          python -m unittest
+        '''
       }
     }
   }
