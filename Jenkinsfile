@@ -7,7 +7,7 @@ pipeline {
           python --version
         '''
         
-        # Write cloud.properties file
+        // Write cloud.properties file
         script {
           def cloudProperties = """
             [cloud]
