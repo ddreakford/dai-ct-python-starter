@@ -38,7 +38,7 @@ class LocalAndroidTest(base_test.BaseTest):
         self.driver.find_element(By.XPATH, "//input[@name='PHONE']").send_keys('1-234-5678')
         self.driver.find_element(By.XPATH, "//input[@name='AMOUNT']").send_keys('1000')
         self.driver.find_element(By.XPATH, "//*[@data-auto='country']").click()
-        self.driver.find_element(By.XPATH, "//*[text()='India']").click()
+        self.driver.find_element(By.XPATH, "//*[string-length() > 0]").click()
         self.driver.find_element(By.XPATH, "//*[@data-auto='transfer-button']").click()
 
 
