@@ -1,9 +1,8 @@
 pipeline {
   agent { dockerfile true }
   stages {
-    stage('Test') {
-      steps {       
-
+    stage('Env Prep') {
+      steps {
         // Write cloud.properties file
         script {
             withCredentials([string(credentialsId: 'CT_CLOUD_ACCESS_KEY_ID', variable: 'CT_ACCESS_KEY')]) {
@@ -15,7 +14,10 @@ pipeline {
                 writeFile file: 'cloud.properties', text: cloudProperties
             }
         }
-
+      }
+    }
+    stage('Test') {
+      steps {       
         // Run the tests
         sh '''
           python --version
