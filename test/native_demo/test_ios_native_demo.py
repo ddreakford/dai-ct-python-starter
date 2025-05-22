@@ -17,7 +17,7 @@ class IosDemoTest(base_test.BaseTest):
         self.options.set_capability('bundleId', 'com.experitest.ExperiBank')
         self.options.set_capability('platformName', 'ios')
         self.options.set_capability('deviceQuery', "@os='ios' and contains(@name, 'Pro')")
-        # self.options.set_capability('appiumVersion', "1.22.3")
+        self.options.set_capability('appiumVersion', "1.22.3")
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)
 
     def testIosNativeDemo(self):
