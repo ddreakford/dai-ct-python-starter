@@ -1,20 +1,20 @@
 import unittest
-import configparser
 import urllib.parse
+import os
 
 
 class BaseTest(unittest.TestCase):
 
-    config = configparser.ConfigParser()
-    config.read('cloud.properties')
-
     def setUp(self):
-        self.options.set_capability('accessKey', self.config.get('cloud', 'accessKey'))
+        access_key = os.environ.get('CT_ACCESS_KEY')
+        # print(f"Access Key: {access_key}")
+        if access_key:
+            self.options.set_capability('accessKey', access_key)
 
     def getUrl(self):
-        url = self.config.get('cloud', 'url')
-        return urllib.parse.urljoin(url, '/wd/hub')
-
+        cloud_url = urllib.parse.urljoin(os.environ.get('CT_URL'), '/wd/hub')
+        print(f"CT URL: {cloud_url}")
+        return cloud_url
 
 if __name__ == '__main__':
     unittest.main()
