@@ -17,7 +17,7 @@ class LocalAndroidTest(base_test.BaseTest):
         self.options.set_capability('testName', self.testName)
         self.options.set_capability('platformName', 'android')
         self.options.set_capability('deviceQuery', "@os='android' and contains(@name, 'Galaxy S2')")
-        # self.options.set_capability('appiumVersion', '1.22.3')
+        self.options.set_capability('appiumVersion', '1.22.3')
         self.options.set_capability('browserName', 'chrome')
 
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)

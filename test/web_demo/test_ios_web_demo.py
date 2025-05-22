@@ -17,7 +17,7 @@ class LocalIosTest(base_test.BaseTest):
         self.options.set_capability('testName', self.testName)
         self.options.set_capability('platformName', 'ios')
         self.options.set_capability('deviceQuery', "@os='ios' and contains(@name, 'Pro')")
-        # self.options.set_capability('appiumVersion', "1.22.3")
+        self.options.set_capability('appiumVersion', "1.22.3")
         self.options.set_capability('browserName', 'safari')
 
         self.driver = webdriver.Remote(self.getUrl(), options=self.options)
